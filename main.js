@@ -1,14 +1,23 @@
+
 $(document).ready(function(){
 
+    $('form').submit(function(e){
   
-    $('form').click('submit', function(e) {
-        e.preventDefault()
-        const tarefaNova=$('#nome-da-tarefa').val()
-        const novoItem=$('<li style="text-decoration:line-through"></li>')
-
-        $(tarefaNova).appendTo(novoItem);
-        $(novoItem).appendTo('ul'); 
-        $(novoItem).fadeIn();  
-        $('#nome-da-tarefa').val('');
+      e.preventDefault();
+      const tarefaNova = $('#nome-da-tarefa').val();
+      const novoItem = $('<li></li>').text(tarefaNova);
+  
+      $('ul').append(novoItem); 
+      $('#nome-da-tarefa').val('');
+  
     })
-})
+    
+    $('ul').on('click', 'li', function(e){
+        e.preventDefault();
+        $(this).toggleClass('riscarTarefa')
+    })
+
+ })
+
+
+ 
